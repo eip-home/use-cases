@@ -4,9 +4,10 @@ title: "EIP use cases"
 category: info
 
 docname: draft-eip-use-cases-latest
-submissiontype: independent  # also: "independent", "IAB", or "IRTF", "IETF"
-consensus: true
-v: 3
+#submissiontype: independent  # also: "independent", "IAB", or "IRTF", "IETF"
+#consensus: true
+#v: 3
+ipr: trust200902
 area: AREA
 workgroup: SIG on EIP
 keyword:
