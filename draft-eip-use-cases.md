@@ -4,30 +4,31 @@ title: "EIP use cases"
 category: info
 
 docname: draft-eip-use-cases-latest
-submissiontype: IETF  # also: "independent", "IAB", or "IRTF"
-number:
-date:
+submissiontype: independent  # also: "independent", "IAB", or "IRTF", "IETF"
 consensus: true
 v: 3
 area: AREA
-workgroup: WG Working Group
+workgroup: SIG on EIP
 keyword:
- - next generation
- - unicorn
- - sparkling distributed ledger
+ - IPv6
+ - Extension Headers
 venue:
-  group: WG
-  type: Working Group
-  mail: WG@example.com
-  arch: https://example.com/WG
-  github: USER/REPO
-  latest: https://example.com/LATEST
+  group: EIP
+  type: SIG
+  mail: eip@cnit.it
+  arch: http://postino.cnit.it/cgi-bin/mailman/private/eip/
+  github: eip-home/use-cases
+  latest: https://eip-home.github.io/use-cases/draft-eip-use-cases.html
 
 author:
  -
-    fullname: Your Name Here
-    organization: Your Organization Here
+    name: "Stefano Salsano"
+    organization: Univ. of Rome Tor Vergata / CNIT
     email: "stefano.salsano@uniroma2.it"
+ -
+    name: "Hesham ElBakoury"
+    organization: Consultant
+    email: "helbakoury@gmail.com"
 
 normative:
 
@@ -36,8 +37,7 @@ informative:
 
 --- abstract
 
-TODO Abstract
-
+This document discussed use cases for the Extensible In-band Processing solution.
 
 --- middle
 
