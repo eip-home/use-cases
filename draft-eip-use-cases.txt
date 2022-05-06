@@ -2,34 +2,36 @@
 
 
 
-WG Working Group                                              Y. N. Here
-Internet-Draft                                    Your Organization Here
-Intended status: Informational                                6 May 2022
-Expires: 7 November 2022
+SIG on EIP                                                    S. Salsano
+Internet-Draft                          Univ. of Rome Tor Vergata / CNIT
+Intended status: Informational                              H. ElBakoury
+Expires: 7 November 2022                                      Consultant
+                                                              6 May 2022
 
 
                              EIP use cases
-                  draft-todo-yourname-protocol-latest
+                       draft-eip-use-cases-latest
 
 Abstract
 
-   TODO Abstract
+   This document discussed use cases for the Extensible In-band
+   Processing solution.
 
 About This Document
 
    This note is to be removed before publishing as an RFC.
 
-   The latest revision of this draft can be found at
-   https://example.com/LATEST.  Status information for this document may
-   be found at https://datatracker.ietf.org/doc/draft-todo-yourname-
-   protocol/.
+   The latest revision of this draft can be found at https://eip-
+   home.github.io/use-cases/draft-eip-use-cases.html.  Status
+   information for this document may be found at
+   https://datatracker.ietf.org/doc/draft-eip-use-cases/.
 
-   Discussion of this document takes place on the WG Working Group
-   mailing list (mailto:WG@example.com), which is archived at
-   https://example.com/WG.
+   Discussion of this document takes place on the EIP SIG mailing list
+   (mailto:eip@cnit.it), which is archived at http://postino.cnit.it/
+   cgi-bin/mailman/private/eip/.
 
    Source for this draft and an issue tracker can be found at
-   https://github.com/USER/REPO.
+   https://github.com/eip-home/use-cases.
 
 Status of This Memo
 
@@ -70,7 +72,7 @@ Table of Contents
    4.  IANA Considerations
    5.  Normative References
    Acknowledgments
-   Author's Address
+   Authors' Addresses
 
 1.  Introduction
 
@@ -97,18 +99,23 @@ Table of Contents
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
               DOI 10.17487/RFC2119, March 1997,
-              <https://www.rfc-editor.org/rfc/rfc2119>.
+              <https://www.rfc-editor.org/info/rfc2119>.
 
    [RFC8174]  Leiba, B., "Ambiguity of Uppercase vs Lowercase in RFC
               2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174,
-              May 2017, <https://www.rfc-editor.org/rfc/rfc8174>.
+              May 2017, <https://www.rfc-editor.org/info/rfc8174>.
 
 Acknowledgments
 
    TODO acknowledge.
 
-Author's Address
+Authors' Addresses
 
-   Your Name Here
-   Your Organization Here
-   Email: your.email@example.com
+   Stefano Salsano
+   Univ. of Rome Tor Vergata / CNIT
+   Email: stefano.salsano@uniroma2.it
+
+
+   Hesham ElBakoury
+   Consultant
+   Email: helbakoury@gmail.com
