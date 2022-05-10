@@ -34,7 +34,7 @@ author:
 normative:
 
 informative:
-  draft-eip-headers-def:
+  draft-eip-headers:
     title: "Extensible In-band Processing (EIP) Headers Definitions"
     author: 
      -
@@ -52,6 +52,24 @@ informative:
        Internet-Draft: draft-eip-headers-definitions
     format:
        TXT: "https://eip-home.github.io/eip-headers/draft-eip-headers-definitions.txt"
+  draft-eip-arch:
+    title: "Extensible In-band Processing (EIP) Architecture and Framework"
+    author: 
+     -
+        name: "Stefano Salsano"
+        ins: "S. Salsano"
+        organization: Univ. of Rome Tor Vergata / CNIT
+        email: "stefano.salsano@uniroma2.it"
+     -
+        name: "Hesham ElBakoury"
+        ins: "H. ElBakoury"
+        organization: Consultant
+        email: "helbakoury@gmail.com"
+    date: 2022
+    seriesInfo: 
+       Internet-Draft: draft-eip-arch
+    format:
+       TXT: "https://eip-home.github.io/eip-arch/draft-eip-arch.txt"
 
 --- abstract
 
@@ -76,7 +94,7 @@ Traditional network monitoring solutions are based on the centralized collection
 The traditional approach separates the data plane and the management plane. The nodes collect counters and statistics, then they communicate with the NMS (Network Management Stations) over the management plane. 
 Current technologies make it possible to define more complex monitoring operations to be performed by nodes in the data plane. The protocol extensibility offered by EIP is the natural complement to this new advanced monitoring approach. Thanks to information carried in the EIP header, it is possible to use the data plane also to synchronize monitoring operations across different nodes and it is possible to collect monitoring information in real time. Data plane entities can be used to sample and aggregate monitoring information. 
 
-Different EIP Information Elements are described in [draft-eip-headers-def].
+Different EIP Information Elements are described in [draft-eip-headers].
 
 
 
