@@ -34,7 +34,7 @@ author:
 normative:
 
 informative:
-  draft-eip-headers:
+  id-eip-headers:
     title: "Extensible In-band Processing (EIP) Headers Definitions"
     author: 
      -
@@ -52,7 +52,7 @@ informative:
        Internet-Draft: draft-eip-headers-definitions
     format:
        TXT: "https://eip-home.github.io/eip-headers/draft-eip-headers-definitions.txt"
-  draft-eip-arch:
+  id-eip-arch:
     title: "Extensible In-band Processing (EIP) Architecture and Framework"
     author: 
      -
@@ -73,7 +73,7 @@ informative:
 
 --- abstract
 
-This document discussed use cases for the Extensible In-band Processing (EIP) solution.
+This document discusses the use cases for the Extensible In-band Processing (EIP) solution.
 
 --- middle
 
@@ -83,7 +83,7 @@ EIP (Extensible In-band Processing) extends the functionality of IPv6 layer to s
 
 EIP provides a common architectural and protocol framework which can be tailored for the different use cases. Each use case will have its own specific architectural aspects and protocol specifications.
 
-In this document, a set of use cases for EIP is discussed. 
+In this document, a set of use cases for EIP is discussed. The EIP architecture is discussed in [id-eip-arch].
 
 # Use cases
 
@@ -94,7 +94,7 @@ Traditional network monitoring solutions are based on the centralized collection
 The traditional approach separates the data plane and the management plane. The nodes collect counters and statistics, then they communicate with the NMS (Network Management Stations) over the management plane. 
 Current technologies make it possible to define more complex monitoring operations to be performed by nodes in the data plane. The protocol extensibility offered by EIP is the natural complement to this new advanced monitoring approach. Thanks to information carried in the EIP header, it is possible to use the data plane also to synchronize monitoring operations across different nodes and it is possible to collect monitoring information in real time. Data plane entities can be used to sample and aggregate monitoring information. 
 
-Different EIP Information Elements are described in [draft-eip-headers].
+Different EIP Information Elements are described in [id-eip-headers].
 
 
 
