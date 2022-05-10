@@ -1,5 +1,5 @@
 ---
-title: "EIP use cases"
+title: "Extensible In-band Processing (EIP) Use Cases"
 #abbrev: "TODO - Abbreviation"
 category: info
 
@@ -35,7 +35,7 @@ normative:
 
 informative:
   draft-eip-headers-def:
-    title: "Extensible In-band Processing Headers Definitions"
+    title: "Extensible In-band Processing (EIP) Headers Definitions"
     author: 
      -
         name: "Stefano Salsano"
@@ -55,7 +55,7 @@ informative:
 
 --- abstract
 
-This document discussed use cases for the Extensible In-band Processing solution.
+This document discussed use cases for the Extensible In-band Processing (EIP) solution.
 
 --- middle
 
@@ -63,7 +63,7 @@ This document discussed use cases for the Extensible In-band Processing solution
 
 EIP (Extensible In-band Processing) extends the functionality of IPv6 layer to support the requirements of future Internet services / 6G networks. In a nutshell, IPv6 nodes (routers and hosts) can read/write EIP information in packet headers to support different use cases.
 
-EIP provides a common framework and solution which can be tailored for the different use cases. Each use case will have its own specific architectural aspects and protocol specifications.
+EIP provides a common architectural and protocol framework which can be tailored for the different use cases. Each use case will have its own specific architectural aspects and protocol specifications.
 
 In this document, a set of use cases for EIP is discussed. 
 
