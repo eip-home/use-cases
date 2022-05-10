@@ -1183,7 +1183,7 @@ svg [stroke="fill"], svg [fill^="#fff"] {
 <p id="section-2.1-1">Traditional network monitoring solutions are based on the centralized collection of monitoring data collected by network nodes (SNMP/Netflow). These traditional solutions are "slow" and have scalability issues. They are not meant to monitor a large number of single flows in real time, they are meant to monitor large aggregates of flows (e.g. all traffic flowing on a given link). Typical time scale of the reaction time of the management system is in the order of minutes (e.g. 1-5 minutes).<a href="#section-2.1-1" class="pilcrow">¶</a></p>
 <p id="section-2.1-2">The traditional approach separates the data plane and the management plane. The nodes collect counters and statistics, then they communicate with the NMS (Network Management Stations) over the management plane. 
 Current technologies make it possible to define more complex monitoring operations to be performed by nodes in the data plane. The protocol extensibility offered by EIP is the natural complement to this new advanced monitoring approach. Thanks to information carried in the EIP header, it is possible to use the data plane also to synchronize monitoring operations across different nodes and it is possible to collect monitoring information in real time. Data plane entities can be used to sample and aggregate monitoring information.<a href="#section-2.1-2" class="pilcrow">¶</a></p>
-<p id="section-2.1-3">Different EIP Information Elements are described in <span>[<a href="#draft-eip-headers-def" class="xref">draft-eip-headers-def</a>]</span>.<a href="#section-2.1-3" class="pilcrow">¶</a></p>
+<p id="section-2.1-3">Different EIP Information Elements are described in <span>[<a href="#draft-eip-headers" class="xref">draft-eip-headers</a>]</span>.<a href="#section-2.1-3" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
@@ -1239,9 +1239,13 @@ appear in all capitals, as shown here.<a href="#section-3-1" class="pilcrow">¶<
 <a href="#section-6.2" class="section-number selfRef">6.2. </a><a href="#name-informative-references" class="section-name selfRef">Informative References</a>
         </h3>
 <dl class="references">
-<dt id="draft-eip-headers-def">[draft-eip-headers-def]</dt>
-      <dd>
+<dt id="draft-eip-headers">[draft-eip-headers]</dt>
+        <dd>
 <span class="refAuthor">Salsano, S.</span> and <span class="refAuthor">H. ElBakoury</span>, <span class="refTitle">"Extensible In-band Processing (EIP) Headers Definitions"</span>, <time datetime="2022" class="refDate">2022</time>, <span>&lt;<a href="https://eip-home.github.io/eip-headers/draft-eip-headers-definitions.txt">https://eip-home.github.io/eip-headers/draft-eip-headers-definitions.txt</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="draft-eip-arch">[draft-eip-arch]</dt>
+      <dd>
+<span class="refAuthor">Salsano, S.</span> and <span class="refAuthor">H. ElBakoury</span>, <span class="refTitle">"Extensible In-band Processing (EIP) Architecture and Framework"</span>, <time datetime="2022" class="refDate">2022</time>, <span>&lt;<a href="https://eip-home.github.io/eip-arch/draft-eip-arch.txt">https://eip-home.github.io/eip-arch/draft-eip-arch.txt</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 </dl>
 </section>
