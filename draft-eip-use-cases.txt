@@ -14,7 +14,7 @@ Expires: 11 November 2022                                     Consultant
 
 Abstract
 
-   This document discussed use cases for the Extensible In-band
+   This document discusses the use cases for the Extensible In-band
    Processing (EIP) solution.
 
 About This Document
@@ -90,7 +90,8 @@ Table of Contents
    be tailored for the different use cases.  Each use case will have its
    own specific architectural aspects and protocol specifications.
 
-   In this document, a set of use cases for EIP is discussed.
+   In this document, a set of use cases for EIP is discussed.  The EIP
+   architecture is discussed in [id-eip-arch].
 
 2.  Use cases
 
@@ -118,8 +119,7 @@ Table of Contents
    time.  Data plane entities can be used to sample and aggregate
    monitoring information.
 
-   Different EIP Information Elements are described in
-   [draft-eip-headers].
+   Different EIP Information Elements are described in [id-eip-headers].
 
 3.  Conventions and Definitions
 
@@ -152,13 +152,13 @@ Table of Contents
 
 6.2.  Informative References
 
-   [draft-eip-headers]
+   [id-eip-headers]
               Salsano, S. and H. ElBakoury, "Extensible In-band
               Processing (EIP) Headers Definitions", 2022, <https://eip-
               home.github.io/eip-headers/draft-eip-headers-
               definitions.txt>.
 
-   [draft-eip-arch]
+   [id-eip-arch]
               Salsano, S. and H. ElBakoury, "Extensible In-band
               Processing (EIP) Architecture and Framework", 2022,
               <https://eip-home.github.io/eip-arch/draft-eip-arch.txt>.
