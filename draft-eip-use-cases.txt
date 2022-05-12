@@ -70,6 +70,7 @@ Table of Contents
    2.  Use cases
      2.1.  Advanced monitoring
      2.2.  Deterministic Networking
+     2.3.  Slicing
    3.  Conventions and Definitions
    4.  Security Considerations
    5.  IANA Considerations
@@ -137,15 +138,18 @@ Table of Contents
    destination port, and DSCP (optional matching on the IPv6 Flow Label
    field).  Flow aggregation may be enabled via the use of wildcards,
    masks, lists, prefixes, and ranges.  IP tunnels may also be used to
-   support flow aggregation.  The result of this design is: *
-   Operational complexity: from a practical standpoint, this means that
-   all nodes along the end-to-end path of DetNet flows need to agree on
-   what fields are used for flow identification.  Possible consequences
-   of not having such an agreement include some flows interfering with
-   other flows, and the traffic treatment expected for a service not
-   being provided. * Lack of unified end-to-end sequencing information:
-   service protection (if enabled) cannot be provided end to end, only
-   within sub-networks.
+   support flow aggregation.  The result of this design is:
+
+   *  Operational complexity: from a practical standpoint, this means
+      that all nodes along the end-to-end path of DetNet flows need to
+      agree on what fields are used for flow identification.  Possible
+      consequences of not having such an agreement include some flows
+      interfering with other flows, and the traffic treatment expected
+      for a service not being provided.
+
+   *  Lack of unified end-to-end sequencing information: service
+      protection (if enabled) cannot be provided end to end, only within
+      sub-networks.
 
    EIP is used to add explicit DetNet information in IP packets.  This
    simplifies the implementation of Deterministic Networking in IP
@@ -154,6 +158,10 @@ Table of Contents
 
    EIP adds the support of explicit Detnet flow identification and
    sequencing information.
+
+2.3.  Slicing
+
+   TO BE PROVIDED
 
 3.  Conventions and Definitions
 
