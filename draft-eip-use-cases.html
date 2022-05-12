@@ -10,12 +10,12 @@
 <meta content="
        This document discusses the use cases for the Extensible In-band Processing (EIP) solution. 
     " name="description">
-<meta content="xml2rfc 3.12.5" name="generator">
+<meta content="xml2rfc 3.12.6" name="generator">
 <meta content="IPv6" name="keyword">
 <meta content="Extension Headers" name="keyword">
 <meta content="draft-eip-use-cases-latest" name="ietf.draft">
 <!-- Generator version information:
-  xml2rfc 3.12.5
+  xml2rfc 3.12.6
     Python 3.9.7
     appdirs 1.4.4
     ConfigArgParse 1.3
@@ -1019,7 +1019,7 @@ svg [stroke="fill"], svg [fill^="#fff"] {
 </tr></thead>
 <tfoot><tr>
 <td class="left">Salsano &amp; ElBakoury</td>
-<td class="center">Expires 11 November 2022</td>
+<td class="center">Expires 13 November 2022</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1032,12 +1032,12 @@ svg [stroke="fill"], svg [fill^="#fff"] {
 <dd class="internet-draft">draft-eip-use-cases-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2022-05-10" class="published">10 May 2022</time>
+<time datetime="2022-05-12" class="published">12 May 2022</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Informational</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2022-11-11">11 November 2022</time></dd>
+<dd class="expires"><time datetime="2022-11-13">13 November 2022</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1090,7 +1090,7 @@ svg [stroke="fill"], svg [fill^="#fff"] {
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 11 November 2022.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 13 November 2022.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1123,10 +1123,13 @@ svg [stroke="fill"], svg [fill^="#fff"] {
             <p id="section-toc.1-1.1.1" class="keepWithNext"><a href="#section-1" class="xref">1</a>.  <a href="#name-introduction" class="xref">Introduction</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2">
-            <p id="section-toc.1-1.2.1" class="keepWithNext"><a href="#section-2" class="xref">2</a>.  <a href="#name-use-cases" class="xref">Use cases</a></p>
+            <p id="section-toc.1-1.2.1"><a href="#section-2" class="xref">2</a>.  <a href="#name-use-cases" class="xref">Use cases</a></p>
 <ul class="compact toc ulBare ulEmpty">
 <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.1">
                 <p id="section-toc.1-1.2.2.1.1" class="keepWithNext"><a href="#section-2.1" class="xref">2.1</a>.  <a href="#name-advanced-monitoring" class="xref">Advanced monitoring</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.2">
+                <p id="section-toc.1-1.2.2.2.1" class="keepWithNext"><a href="#section-2.2" class="xref">2.2</a>.  <a href="#name-deterministic-networking" class="xref">Deterministic Networking</a></p>
 </li>
             </ul>
 </li>
@@ -1166,8 +1169,8 @@ svg [stroke="fill"], svg [fill^="#fff"] {
 <a href="#section-1" class="section-number selfRef">1. </a><a href="#name-introduction" class="section-name selfRef">Introduction</a>
       </h2>
 <p id="section-1-1">EIP (Extensible In-band Processing) extends the functionality of IPv6 layer to support the requirements of future Internet services / 6G networks. In a nutshell, IPv6 nodes (routers and hosts) can read/write EIP information in packet headers to support different use cases.<a href="#section-1-1" class="pilcrow">¶</a></p>
-<p id="section-1-2">EIP provides a common architectural and protocol framework which can be tailored for the different use cases. Each use case will have its own specific architectural aspects and protocol specifications.<a href="#section-1-2" class="pilcrow">¶</a></p>
-<p id="section-1-3">In this document, a set of use cases for EIP is discussed. The EIP architecture is discussed in <span>[<a href="#id-eip-arch" class="xref">id-eip-arch</a>]</span>.<a href="#section-1-3" class="pilcrow">¶</a></p>
+<p id="section-1-2">EIP provides a common architectural and protocol framework which can be tailored for the different use cases. The EIP header includes a number of EIP Information Elements. Each use case will have its own specific architectural aspects and protocol specifications (EIP Information Elements).<a href="#section-1-2" class="pilcrow">¶</a></p>
+<p id="section-1-3">In this document, some use cases for EIP are discussed. The EIP architecture is discussed in <span>[<a href="#id-eip-arch" class="xref">id-eip-arch</a>]</span>. The EIP Information Elements are described in <span>[<a href="#id-eip-headers" class="xref">id-eip-headers</a>]</span>.<a href="#section-1-3" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="use-cases">
@@ -1183,7 +1186,18 @@ svg [stroke="fill"], svg [fill^="#fff"] {
 <p id="section-2.1-1">Traditional network monitoring solutions are based on the centralized collection of monitoring data collected by network nodes (SNMP/Netflow). These traditional solutions are "slow" and have scalability issues. They are not meant to monitor a large number of single flows in real time, they are meant to monitor large aggregates of flows (e.g. all traffic flowing on a given link). Typical time scale of the reaction time of the management system is in the order of minutes (e.g. 1-5 minutes).<a href="#section-2.1-1" class="pilcrow">¶</a></p>
 <p id="section-2.1-2">The traditional approach separates the data plane and the management plane. The nodes collect counters and statistics, then they communicate with the NMS (Network Management Stations) over the management plane. 
 Current technologies make it possible to define more complex monitoring operations to be performed by nodes in the data plane. The protocol extensibility offered by EIP is the natural complement to this new advanced monitoring approach. Thanks to information carried in the EIP header, it is possible to use the data plane also to synchronize monitoring operations across different nodes and it is possible to collect monitoring information in real time. Data plane entities can be used to sample and aggregate monitoring information.<a href="#section-2.1-2" class="pilcrow">¶</a></p>
-<p id="section-2.1-3">Different EIP Information Elements are described in <span>[<a href="#id-eip-headers" class="xref">id-eip-headers</a>]</span>.<a href="#section-2.1-3" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="deterministic-networking">
+<section id="section-2.2">
+        <h3 id="name-deterministic-networking">
+<a href="#section-2.2" class="section-number selfRef">2.2. </a><a href="#name-deterministic-networking" class="section-name selfRef">Deterministic Networking</a>
+        </h3>
+<p id="section-2.2-1"><span>[<a href="#RFC8655" class="xref">RFC8655</a>]</span> and <span>[<a href="#RFC8938" class="xref">RFC8938</a>]</span> respectively specify the Architecture and data Plane Framework for Deterministic Networking. <span>[<a href="#RFC8939" class="xref">RFC8939</a>]</span> specifies the IP data plane for DetNet, with this design choice: existing IP-layer and higher-layer protocol header information is used to support flow identification and DetNet service delivery. There are known limitations in the current IP data plane for DetNet, as discussed in [RFC 8939]. In particular, the IP data plane for DetNet, uses 6-tuple-based flow identification, where "6-tuple" is destination address, source address, IP protocol, source port, destination port, and DSCP (optional matching on the IPv6 Flow Label field). Flow aggregation may be enabled via the use of wildcards, masks, lists, prefixes, and ranges. IP tunnels may also be used to support flow aggregation. The result of this design is:
+* Operational complexity: from a practical standpoint, this means that all nodes along the end-to-end path of DetNet flows need to agree on what fields are used for flow identification. Possible consequences of not having such an agreement include some flows interfering with other flows, and the traffic treatment expected for a service not being provided.
+* Lack of unified end-to-end sequencing information: service protection (if enabled) cannot be provided end to end, only within sub-networks.<a href="#section-2.2-1" class="pilcrow">¶</a></p>
+<p id="section-2.2-2">EIP is used to add explicit DetNet information in IP packets. This simplifies the implementation of Deterministic Networking in IP routers and hosts and provides additional features with respect to current support of Detnet in IP networks.<a href="#section-2.2-2" class="pilcrow">¶</a></p>
+<p id="section-2.2-3">EIP adds the support of explicit Detnet flow identification and sequencing information.<a href="#section-2.2-3" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
@@ -1244,8 +1258,20 @@ appear in all capitals, as shown here.<a href="#section-3-1" class="pilcrow">¶<
 <span class="refAuthor">Salsano, S.</span> and <span class="refAuthor">H. ElBakoury</span>, <span class="refTitle">"Extensible In-band Processing (EIP) Headers Definitions"</span>, <time datetime="2022" class="refDate">2022</time>, <span>&lt;<a href="https://eip-home.github.io/eip-headers/draft-eip-headers-definitions.txt">https://eip-home.github.io/eip-headers/draft-eip-headers-definitions.txt</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="id-eip-arch">[id-eip-arch]</dt>
-      <dd>
+        <dd>
 <span class="refAuthor">Salsano, S.</span> and <span class="refAuthor">H. ElBakoury</span>, <span class="refTitle">"Extensible In-band Processing (EIP) Architecture and Framework"</span>, <time datetime="2022" class="refDate">2022</time>, <span>&lt;<a href="https://eip-home.github.io/eip-arch/draft-eip-arch.txt">https://eip-home.github.io/eip-arch/draft-eip-arch.txt</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC8655">[RFC8655]</dt>
+        <dd>
+<span class="refAuthor">Finn, N.</span>, <span class="refAuthor">Thubert, P.</span>, <span class="refAuthor">Varga, B.</span>, and <span class="refAuthor">J. Farkas</span>, <span class="refTitle">"Deterministic Networking Architecture"</span>, <span class="seriesInfo">RFC 8655</span>, <span class="seriesInfo">DOI 10.17487/RFC8655</span>, <time datetime="2019-10" class="refDate">October 2019</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8655">https://www.rfc-editor.org/info/rfc8655</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC8938">[RFC8938]</dt>
+        <dd>
+<span class="refAuthor">Varga, B., Ed.</span>, <span class="refAuthor">Farkas, J.</span>, <span class="refAuthor">Berger, L.</span>, <span class="refAuthor">Malis, A.</span>, and <span class="refAuthor">S. Bryant</span>, <span class="refTitle">"Deterministic Networking (DetNet) Data Plane Framework"</span>, <span class="seriesInfo">RFC 8938</span>, <span class="seriesInfo">DOI 10.17487/RFC8938</span>, <time datetime="2020-11" class="refDate">November 2020</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8938">https://www.rfc-editor.org/info/rfc8938</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC8939">[RFC8939]</dt>
+      <dd>
+<span class="refAuthor">Varga, B., Ed.</span>, <span class="refAuthor">Farkas, J.</span>, <span class="refAuthor">Berger, L.</span>, <span class="refAuthor">Fedyk, D.</span>, and <span class="refAuthor">S. Bryant</span>, <span class="refTitle">"Deterministic Networking (DetNet) Data Plane: IP"</span>, <span class="seriesInfo">RFC 8939</span>, <span class="seriesInfo">DOI 10.17487/RFC8939</span>, <time datetime="2020-11" class="refDate">November 2020</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8939">https://www.rfc-editor.org/info/rfc8939</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 </dl>
 </section>
