@@ -89,7 +89,7 @@ EIP provides a common architectural and protocol framework which can be tailored
 
 In this document, some use cases for EIP are discussed. The EIP architecture is discussed in [id-eip-arch]. The EIP Information Elements are described in [id-eip-headers].
 
-# Use cases
+# Use cases (high level description)
 
 ## Advanced monitoring
 
@@ -113,6 +113,12 @@ EIP adds the support of explicit Detnet flow identification and sequencing infor
 ## Slicing
 
 TO BE PROVIDED
+
+# Detailed design of EIP based implementation of the use cases
+
+## Advanced monitoring
+
+TO BE PROVIDED 
 
 # Conventions and Definitions
 
