@@ -24,17 +24,17 @@ venue:
 author:
  -
     name: "Stefano Salsano"
-    organization: Univ. of Rome Tor Vergata / CNIT
+    organization: "Univ. of Rome Tor Vergata / CNIT"
     email: "stefano.salsano@uniroma2.it"
  -
     name: "Hesham ElBakoury"
     organization: Consultant
     email: "helbakoury@gmail.com"
--
+ -
     name: "Diego R. Lopez"
     ins: "D. Lopez"
-    organization: Telefonica, I+D
-    email: "diego.r.lopez@telefonica.com"    
+    organization: "Telefonica, I+D"
+    email: "diego.r.lopez@telefonica.com"
 
 normative:
 
