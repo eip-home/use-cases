@@ -39,6 +39,7 @@ author:
 normative:
 
 informative:
+  I-D.draft-filsfils-spring-path-tracing:
   I-D.draft-farrel-irtf-introduction-to-semantic-routing:
   I-D.draft-king-irtf-semantic-routing-survey:
   id-eip-headers:
@@ -107,11 +108,15 @@ Traditional network monitoring solutions are based on the centralized collection
 The traditional approach separates the data plane and the management plane. The nodes collect counters and statistics, then they communicate with the NMS (Network Management Stations) over the management plane.
 Current technologies make it possible to define more complex monitoring operations to be performed by nodes in the data plane. The protocol extensibility offered by EIP is the natural complement to this new advanced monitoring approach. Thanks to information carried in the EIP header, it is possible to use the data plane also to synchronize monitoring operations across different nodes and it is possible to collect monitoring information in real time. Data plane entities can be used to sample and aggregate monitoring information.
 
+test {{I-D.draft-filsfils-spring-path-tracing}}
+
 ## Semantic Routing
 
 The Internet Draft {{I-D.draft-farrel-irtf-introduction-to-semantic-routing}} provides a brief introduction to Semantic Routing. The Internet Draft {{I-D.draft-king-irtf-semantic-routing-survey}} includes a survey of several approaches for Semantic Routing.
 
 EIP can support Semantic Routing, when it is needed to place information in additional fields of the packets. Specific EIP Information Elements can be defined to carry the information needed by Semantic Routing.
+
+A specific example is "geo-tagging", i.e. encoding the geographical position of a node in the IPv6 headers, so that this information can be used also for taking forwarding decisions.
 
 ## Deterministic Networking
 
