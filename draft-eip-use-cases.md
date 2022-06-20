@@ -85,7 +85,9 @@ informative:
     format:
        TXT: "https://eip-home.github.io/eip-arch/draft-eip-arch.txt"
 
-
+stand_alone: yes
+smart_quotes: no
+pi: [toc, sortrefs, symrefs]
 
 --- abstract
 
@@ -114,6 +116,8 @@ Current technologies make it possible to define more complex monitoring operatio
 
 
 ## Semantic Routing
+
+The Internet Draft {{I-D.draft-farrel-irtf-introduction-to-semantic-routing}} provides a brief introduction to Semantic Routing. The Internet Draft {{I-D.draft-king-irtf-semantic-routing-survey}} includes a survey of several approaches for Semantic Routing.
 
 EIP can support Semantic Routing, when it is needed to place information in additional fields of the packets. Specific EIP Information Elements can be defined to carry the information needed by Semantic Routing.
 
