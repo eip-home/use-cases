@@ -7,7 +7,7 @@ docname: draft-eip-use-cases-latest
 submissiontype: independent  # also: "independent", "IAB", or "IRTF", "IETF"
 #consensus: true
 #v: 3
-# test {{I-D.draft-filsfils-spring-path-tracing}}
+# “Path Tracing” {{I-D.draft-filsfils-spring-path-tracing}}
 # The Internet Draft {{I-D.draft-farrel-irtf-introduction-to-semantic-routing}} provides a brief introduction to Semantic Routing. The Internet Draft {{I-D.draft-king-irtf-semantic-routing-survey}} includes a survey of several approaches for Semantic Routing.
 
 ipr: trust200902
@@ -130,7 +130,7 @@ EIP is used to add explicit DetNet information in IP packets. This simplifies th
 
 EIP adds the support of explicit Detnet flow identification and sequencing information.
 
-“Path Tracing” {{I-D.draft-filsfils-spring-path-tracing}}
+
 
 ## Slicing
 
