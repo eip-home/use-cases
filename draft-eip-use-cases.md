@@ -100,7 +100,7 @@ EIP (Extensible In-band Processing) extends the functionality of IPv6 layer to s
 
 EIP provides a common architectural and protocol framework which can be tailored for the different use cases. The EIP header includes a number of EIP Information Elements. Each use case will have its own specific architectural aspects and protocol specifications (EIP Information Elements).
 
-In this document, some use cases for EIP are discussed. The EIP architecture is discussed in [id-eip-arch]. The EIP Information Elements are described in [id-eip-headers].
+In this document, some use cases for EIP are discussed. The EIP architecture is discussed in {{id-eip-arch}}. The EIP Information Elements are described in {{id-eip-headers}}.
 
 # Use cases (high level description)
 
@@ -120,7 +120,7 @@ A specific example is "geo-tagging", i.e. encoding the geographical position of 
 
 ## Deterministic Networking
 
-[RFC8655] and [RFC8938] respectively specify the Architecture and data Plane Framework for Deterministic Networking. [RFC8939] specifies the IP data plane for DetNet, with this design choice: existing IP-layer and higher-layer protocol header information is used to support flow identification and DetNet service delivery. There are known limitations in the current IP data plane for DetNet, as discussed in [RFC8939]. In particular, the IP data plane for DetNet, uses 6-tuple-based flow identification, where "6-tuple" is destination address, source address, IP protocol, source port, destination port, and DSCP (optional matching on the IPv6 Flow Label field). Flow aggregation may be enabled via the use of wildcards, masks, lists, prefixes, and ranges. IP tunnels may also be used to support flow aggregation. The result of this design is:
+{{RFC8655}} and {{RFC8938}} respectively specify the Architecture and data Plane Framework for Deterministic Networking. {{RFC8939}} specifies the IP data plane for DetNet, with this design choice: existing IP-layer and higher-layer protocol header information is used to support flow identification and DetNet service delivery. There are known limitations in the current IP data plane for DetNet, as discussed in {{RFC8939}}. In particular, the IP data plane for DetNet, uses 6-tuple-based flow identification, where "6-tuple" is destination address, source address, IP protocol, source port, destination port, and DSCP (optional matching on the IPv6 Flow Label field). Flow aggregation may be enabled via the use of wildcards, masks, lists, prefixes, and ranges. IP tunnels may also be used to support flow aggregation. The result of this design is:
 
 * Operational complexity: from a practical standpoint, this means that all nodes along the end-to-end path of DetNet flows need to agree on what fields are used for flow identification. Possible consequences of not having such an agreement include some flows interfering with other flows, and the traffic treatment expected for a service not being provided.
 
