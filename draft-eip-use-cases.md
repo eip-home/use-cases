@@ -117,11 +117,11 @@ Current technologies make it possible to define more complex monitoring operatio
 
 ## Semantic Routing
 
-The Internet Draft {{I-D.draft-farrel-irtf-introduction-to-semantic-routing}} provides a brief introduction to Semantic Routing. The Internet Draft {{I-D.draft-king-irtf-semantic-routing-survey}} includes a survey of several approaches for Semantic Routing.
+The Internet Draft {{I-D.draft-farrel-irtf-introduction-to-semantic-routing}} provides a brief introduction to Semantic Routing. The Internet Draft {{I-D.draft-king-irtf-semantic-routing-survey}} includes a survey of several approaches that can be classified under the umbrella term Semantic Routing.
 
-EIP can support Semantic Routing, when it is needed to place information in additional fields of the packets. Specific EIP Information Elements can be defined to carry the information needed by Semantic Routing.
+EIP can support Semantic Routing, in the cases where it is needed to place information in additional fields of the packets. Specific EIP Information Elements can be defined to carry the information needed by Semantic Routing.
 
-A specific example is "geo-tagging", i.e. encoding the geographical position of a node in the IPv6 headers, so that this information can be used also for taking forwarding decisions.
+One example is "geo-tagging", i.e. encoding the geographical position of a node in the IPv6 headers, so that this information can be used (also) for taking forwarding decisions. A Geo-tagging EIP Information Element can be defined, which can be used by a node to provide its location or to indicate the location of a destination node.
 
 ## Deterministic Networking
 
