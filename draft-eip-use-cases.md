@@ -39,6 +39,8 @@ author:
 normative:
 
 informative:
+  I-D.draft-farrel-irtf-introduction-to-semantic-routing:
+  I-D.draft-king-irtf-semantic-routing-survey:
   id-eip-headers:
     title: "Extensible In-band Processing (EIP) Headers Definitions"
     author:
@@ -84,6 +86,8 @@ informative:
 
 This document discusses the use cases for the Extensible In-band Processing (EIP) solution.
 
+Caveat: this document is still in brainstorming stage, it is distributed to stimulate discussion.
+
 --- middle
 
 # Introduction
@@ -103,6 +107,12 @@ Traditional network monitoring solutions are based on the centralized collection
 The traditional approach separates the data plane and the management plane. The nodes collect counters and statistics, then they communicate with the NMS (Network Management Stations) over the management plane.
 Current technologies make it possible to define more complex monitoring operations to be performed by nodes in the data plane. The protocol extensibility offered by EIP is the natural complement to this new advanced monitoring approach. Thanks to information carried in the EIP header, it is possible to use the data plane also to synchronize monitoring operations across different nodes and it is possible to collect monitoring information in real time. Data plane entities can be used to sample and aggregate monitoring information.
 
+## Semantic Routing
+
+The Internet Draft {{I-D.draft-farrel-irtf-introduction-to-semantic-routing}} provides a brief introduction to Semantic Routing. The Internet Draft {{I-D.draft-king-irtf-semantic-routing-survey}} includes a survey of several approaches for Semantic Routing.
+
+EIP can support Semantic Routing, when it is needed to place information in additional fields of the packets. Specific EIP Information Elements can be defined to carry the information needed by Semantic Routing.
+
 ## Deterministic Networking
 
 [RFC8655] and [RFC8938] respectively specify the Architecture and data Plane Framework for Deterministic Networking. [RFC8939] specifies the IP data plane for DetNet, with this design choice: existing IP-layer and higher-layer protocol header information is used to support flow identification and DetNet service delivery. There are known limitations in the current IP data plane for DetNet, as discussed in [RFC8939]. In particular, the IP data plane for DetNet, uses 6-tuple-based flow identification, where "6-tuple" is destination address, source address, IP protocol, source port, destination port, and DSCP (optional matching on the IPv6 Flow Label field). Flow aggregation may be enabled via the use of wildcards, masks, lists, prefixes, and ranges. IP tunnels may also be used to support flow aggregation. The result of this design is:
@@ -120,8 +130,6 @@ EIP adds the support of explicit Detnet flow identification and sequencing infor
 TO BE PROVIDED
 
 # Detailed design of EIP based implementation of the use cases
-
-## Advanced monitoring
 
 TO BE PROVIDED
 
