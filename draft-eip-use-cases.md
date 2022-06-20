@@ -4,7 +4,7 @@ title: "Extensible In-band Processing (EIP) Use Cases"
 category: info
 
 docname: draft-eip-use-cases-latest
-#submissiontype: independent  # also: "independent", "IAB", or "IRTF", "IETF"
+submissiontype: independent  # also: "independent", "IAB", or "IRTF", "IETF"
 #consensus: true
 #v: 3
 # test {{I-D.draft-filsfils-spring-path-tracing}}
@@ -129,6 +129,8 @@ A specific example is "geo-tagging", i.e. encoding the geographical position of 
 EIP is used to add explicit DetNet information in IP packets. This simplifies the implementation of Deterministic Networking in IP routers and hosts and provides additional features with respect to current support of Detnet in IP networks.
 
 EIP adds the support of explicit Detnet flow identification and sequencing information.
+
+“Path Tracing” {{I-D.draft-filsfils-spring-path-tracing}}
 
 ## Slicing
 
