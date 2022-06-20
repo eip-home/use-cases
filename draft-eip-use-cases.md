@@ -1,6 +1,6 @@
 ---
 title: "Extensible In-band Processing (EIP) Use Cases"
-#abbrev: "TODO - Abbreviation"
+abbrev: "EIP Use Cases"
 category: info
 
 docname: draft-eip-use-cases-latest
@@ -42,6 +42,9 @@ author:
 normative:
 
 informative:
+  RFC8655:
+  RFC8938:
+  RFC8939:
   I-D.draft-filsfils-spring-path-tracing:
   I-D.draft-farrel-irtf-introduction-to-semantic-routing:
   I-D.draft-king-irtf-semantic-routing-survey:
@@ -81,9 +84,7 @@ informative:
        Internet-Draft: draft-eip-arch
     format:
        TXT: "https://eip-home.github.io/eip-arch/draft-eip-arch.txt"
-  RFC8655:
-  RFC8938:
-  RFC8939:
+
 
 
 --- abstract
