@@ -213,6 +213,21 @@ Table of Contents
 
 7.2.  Informative References
 
+   [RFC8655]  Finn, N., Thubert, P., Varga, B., and J. Farkas,
+              "Deterministic Networking Architecture", RFC 8655,
+              DOI 10.17487/RFC8655, October 2019,
+              <https://www.rfc-editor.org/info/rfc8655>.
+
+   [RFC8938]  Varga, B., Ed., Farkas, J., Berger, L., Malis, A., and S.
+              Bryant, "Deterministic Networking (DetNet) Data Plane
+              Framework", RFC 8938, DOI 10.17487/RFC8938, November 2020,
+              <https://www.rfc-editor.org/info/rfc8938>.
+
+   [RFC8939]  Varga, B., Ed., Farkas, J., Berger, L., Fedyk, D., and S.
+              Bryant, "Deterministic Networking (DetNet) Data Plane:
+              IP", RFC 8939, DOI 10.17487/RFC8939, November 2020,
+              <https://www.rfc-editor.org/info/rfc8939>.
+
    [I-D.filsfils-spring-path-tracing]
               Filsfils, C., Abdelsalam, A., Garvia, P. C., Yufit, M.,
               Graf, T., Su, Y., and S. Matsushima, "Path Tracing in SRv6
@@ -245,21 +260,6 @@ Table of Contents
               Salsano, S. and H. ElBakoury, "Extensible In-band
               Processing (EIP) Architecture and Framework", 2022,
               <https://eip-home.github.io/eip-arch/draft-eip-arch.txt>.
-
-   [RFC8655]  Finn, N., Thubert, P., Varga, B., and J. Farkas,
-              "Deterministic Networking Architecture", RFC 8655,
-              DOI 10.17487/RFC8655, October 2019,
-              <https://www.rfc-editor.org/info/rfc8655>.
-
-   [RFC8938]  Varga, B., Ed., Farkas, J., Berger, L., Malis, A., and S.
-              Bryant, "Deterministic Networking (DetNet) Data Plane
-              Framework", RFC 8938, DOI 10.17487/RFC8938, November 2020,
-              <https://www.rfc-editor.org/info/rfc8938>.
-
-   [RFC8939]  Varga, B., Ed., Farkas, J., Berger, L., Fedyk, D., and S.
-              Bryant, "Deterministic Networking (DetNet) Data Plane:
-              IP", RFC 8939, DOI 10.17487/RFC8939, November 2020,
-              <https://www.rfc-editor.org/info/rfc8939>.
 
 Acknowledgments
 
