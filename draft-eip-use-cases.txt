@@ -130,6 +130,12 @@ Table of Contents
 
 2.2.  Semantic Routing
 
+   The Internet Draft
+   [I-D.draft-farrel-irtf-introduction-to-semantic-routing] provides a
+   brief introduction to Semantic Routing.  The Internet Draft
+   [I-D.draft-king-irtf-semantic-routing-survey] includes a survey of
+   several approaches for Semantic Routing.
+
    EIP can support Semantic Routing, when it is needed to place
    information in additional fields of the packets.  Specific EIP
    Information Elements can be defined to carry the information needed
@@ -205,50 +211,40 @@ Table of Contents
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
               DOI 10.17487/RFC2119, March 1997,
-              <https://www.rfc-editor.org/info/rfc2119>.
+              <https://www.rfc-editor.org/rfc/rfc2119>.
 
    [RFC8174]  Leiba, B., "Ambiguity of Uppercase vs Lowercase in RFC
               2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174,
-              May 2017, <https://www.rfc-editor.org/info/rfc8174>.
+              May 2017, <https://www.rfc-editor.org/rfc/rfc8174>.
 
 7.2.  Informative References
 
-   [RFC8655]  Finn, N., Thubert, P., Varga, B., and J. Farkas,
-              "Deterministic Networking Architecture", RFC 8655,
-              DOI 10.17487/RFC8655, October 2019,
-              <https://www.rfc-editor.org/info/rfc8655>.
-
-   [RFC8938]  Varga, B., Ed., Farkas, J., Berger, L., Malis, A., and S.
-              Bryant, "Deterministic Networking (DetNet) Data Plane
-              Framework", RFC 8938, DOI 10.17487/RFC8938, November 2020,
-              <https://www.rfc-editor.org/info/rfc8938>.
-
-   [RFC8939]  Varga, B., Ed., Farkas, J., Berger, L., Fedyk, D., and S.
-              Bryant, "Deterministic Networking (DetNet) Data Plane:
-              IP", RFC 8939, DOI 10.17487/RFC8939, November 2020,
-              <https://www.rfc-editor.org/info/rfc8939>.
-
-   [I-D.filsfils-spring-path-tracing]
-              Filsfils, C., Abdelsalam, A., Garvia, P. C., Yufit, M.,
-              Graf, T., Su, Y., and S. Matsushima, "Path Tracing in SRv6
-              networks", Work in Progress, Internet-Draft, draft-
-              filsfils-spring-path-tracing-00, 4 March 2022,
-              <https://www.ietf.org/archive/id/draft-filsfils-spring-
-              path-tracing-00.txt>.
-
-   [I-D.farrel-irtf-introduction-to-semantic-routing]
+   [I-D.draft-farrel-irtf-introduction-to-semantic-routing]
               Farrel, A. and D. King, "An Introduction to Semantic
               Routing", Work in Progress, Internet-Draft, draft-farrel-
               irtf-introduction-to-semantic-routing-04, 25 April 2022,
-              <https://www.ietf.org/archive/id/draft-farrel-irtf-
-              introduction-to-semantic-routing-04.txt>.
+              <https://datatracker.ietf.org/doc/html/draft-farrel-irtf-
+              introduction-to-semantic-routing-04>.
 
-   [I-D.king-irtf-semantic-routing-survey]
+   [I-D.draft-filsfils-spring-path-tracing]
+              Filsfils, C., Abdelsalam, A., Garvia, P. C., Yufit, M.,
+              Graf, T., Su, Y., Matsushima, S., and M. Valentine, "Path
+              Tracing in SRv6 networks", Work in Progress, Internet-
+              Draft, draft-filsfils-spring-path-tracing-01, 30 May 2022,
+              <https://datatracker.ietf.org/doc/html/draft-filsfils-
+              spring-path-tracing-01>.
+
+   [I-D.draft-king-irtf-semantic-routing-survey]
               King, D. and A. Farrel, "A Survey of Semantic Internet
               Routing Techniques", Work in Progress, Internet-Draft,
-              draft-king-irtf-semantic-routing-survey-02, 28 June 2021,
-              <https://www.ietf.org/archive/id/draft-king-irtf-semantic-
-              routing-survey-02.txt>.
+              draft-king-irtf-semantic-routing-survey-04, 30 May 2022,
+              <https://datatracker.ietf.org/doc/html/draft-king-irtf-
+              semantic-routing-survey-04>.
+
+   [id-eip-arch]
+              Salsano, S. and H. ElBakoury, "Extensible In-band
+              Processing (EIP) Architecture and Framework", 2022,
+              <https://eip-home.github.io/eip-arch/draft-eip-arch.txt>.
 
    [id-eip-headers]
               Salsano, S. and H. ElBakoury, "Extensible In-band
@@ -256,10 +252,20 @@ Table of Contents
               home.github.io/eip-headers/draft-eip-headers-
               definitions.txt>.
 
-   [id-eip-arch]
-              Salsano, S. and H. ElBakoury, "Extensible In-band
-              Processing (EIP) Architecture and Framework", 2022,
-              <https://eip-home.github.io/eip-arch/draft-eip-arch.txt>.
+   [RFC8655]  Finn, N., Thubert, P., Varga, B., and J. Farkas,
+              "Deterministic Networking Architecture", RFC 8655,
+              DOI 10.17487/RFC8655, October 2019,
+              <https://www.rfc-editor.org/rfc/rfc8655>.
+
+   [RFC8938]  Varga, B., Ed., Farkas, J., Berger, L., Malis, A., and S.
+              Bryant, "Deterministic Networking (DetNet) Data Plane
+              Framework", RFC 8938, DOI 10.17487/RFC8938, November 2020,
+              <https://www.rfc-editor.org/rfc/rfc8938>.
+
+   [RFC8939]  Varga, B., Ed., Farkas, J., Berger, L., Fedyk, D., and S.
+              Bryant, "Deterministic Networking (DetNet) Data Plane:
+              IP", RFC 8939, DOI 10.17487/RFC8939, November 2020,
+              <https://www.rfc-editor.org/rfc/rfc8939>.
 
 Acknowledgments
 
