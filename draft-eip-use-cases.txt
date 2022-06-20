@@ -5,10 +5,10 @@
 SIG on EIP                                                    S. Salsano
 Internet-Draft                          Univ. of Rome Tor Vergata / CNIT
 Intended status: Informational                              H. ElBakoury
-Expires: 27 November 2022                                     Consultant
+Expires: 22 December 2022                                     Consultant
                                                                 D. Lopez
                                                          Telefonica, I+D
-                                                             26 May 2022
+                                                            20 June 2022
 
 
              Extensible In-band Processing (EIP) Use Cases
@@ -18,6 +18,9 @@ Abstract
 
    This document discusses the use cases for the Extensible In-band
    Processing (EIP) solution.
+
+   Caveat: this document is still in brainstorming stage, it is
+   distributed to stimulate discussion.
 
 About This Document
 
@@ -50,7 +53,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 27 November 2022.
+   This Internet-Draft will expire on 22 December 2022.
 
 Copyright Notice
 
@@ -71,10 +74,10 @@ Table of Contents
    1.  Introduction
    2.  Use cases (high level description)
      2.1.  Advanced monitoring
-     2.2.  Deterministic Networking
-     2.3.  Slicing
+     2.2.  Semantic Routing
+     2.3.  Deterministic Networking
+     2.4.  Slicing
    3.  Detailed design of EIP based implementation of the use cases
-     3.1.  Advanced monitoring
    4.  Conventions and Definitions
    5.  Security Considerations
    6.  IANA Considerations
@@ -128,7 +131,18 @@ Table of Contents
    time.  Data plane entities can be used to sample and aggregate
    monitoring information.
 
-2.2.  Deterministic Networking
+2.2.  Semantic Routing
+
+   EIP can support Semantic Routing, when it is needed to place
+   information in additional fields of the packets.  Specific EIP
+   Information Elements can be defined to carry the information needed
+   by Semantic Routing.
+
+   A specific example is "geo-tagging", i.e. encoding the geographical
+   position of a node in the IPv6 headers, so that this information can
+   be used also for taking forwarding decisions.
+
+2.3.  Deterministic Networking
 
    [RFC8655] and [RFC8938] respectively specify the Architecture and
    data Plane Framework for Deterministic Networking.  [RFC8939]
@@ -163,13 +177,11 @@ Table of Contents
    EIP adds the support of explicit Detnet flow identification and
    sequencing information.
 
-2.3.  Slicing
+2.4.  Slicing
 
    TO BE PROVIDED
 
 3.  Detailed design of EIP based implementation of the use cases
-
-3.1.  Advanced monitoring
 
    TO BE PROVIDED
 
@@ -203,6 +215,28 @@ Table of Contents
               May 2017, <https://www.rfc-editor.org/info/rfc8174>.
 
 7.2.  Informative References
+
+   [I-D.filsfils-spring-path-tracing]
+              Filsfils, C., Abdelsalam, A., Garvia, P. C., Yufit, M.,
+              Graf, T., Su, Y., and S. Matsushima, "Path Tracing in SRv6
+              networks", Work in Progress, Internet-Draft, draft-
+              filsfils-spring-path-tracing-00, 4 March 2022,
+              <https://www.ietf.org/archive/id/draft-filsfils-spring-
+              path-tracing-00.txt>.
+
+   [I-D.farrel-irtf-introduction-to-semantic-routing]
+              Farrel, A. and D. King, "An Introduction to Semantic
+              Routing", Work in Progress, Internet-Draft, draft-farrel-
+              irtf-introduction-to-semantic-routing-04, 25 April 2022,
+              <https://www.ietf.org/archive/id/draft-farrel-irtf-
+              introduction-to-semantic-routing-04.txt>.
+
+   [I-D.king-irtf-semantic-routing-survey]
+              King, D. and A. Farrel, "A Survey of Semantic Internet
+              Routing Techniques", Work in Progress, Internet-Draft,
+              draft-king-irtf-semantic-routing-survey-02, 28 June 2021,
+              <https://www.ietf.org/archive/id/draft-king-irtf-semantic-
+              routing-survey-02.txt>.
 
    [id-eip-headers]
               Salsano, S. and H. ElBakoury, "Extensible In-band

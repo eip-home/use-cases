@@ -10,28 +10,29 @@
 <meta content="Diego R. Lopez" name="author">
 <meta content="
        This document discusses the use cases for the Extensible In-band Processing (EIP) solution. 
+       Caveat: this document is still in brainstorming stage, it is distributed to stimulate discussion. 
     " name="description">
-<meta content="xml2rfc 3.12.7" name="generator">
+<meta content="xml2rfc 3.12.10" name="generator">
 <meta content="IPv6" name="keyword">
 <meta content="Extension Headers" name="keyword">
 <meta content="draft-eip-use-cases-latest" name="ietf.draft">
 <!-- Generator version information:
-  xml2rfc 3.12.7
-    Python 3.9.7
+  xml2rfc 3.12.10
+    Python 3.10.4
     appdirs 1.4.4
-    ConfigArgParse 1.3
+    ConfigArgParse 1.5.3
     google-i18n-address 2.5.1
     html5lib 1.1
     intervaltree 3.1.0
     Jinja2 2.11.3
     kitchen 1.2.6
-    lxml 4.6.5
+    lxml 4.8.0
     MarkupSafe 2.0.1
     pycountry 20.7.3
-    pyflakes 2.3.1
-    PyYAML 5.4.1
-    requests 2.26.0
-    setuptools 52.0.0
+    pyflakes 2.4.0
+    PyYAML 6.0
+    requests 2.27.1
+    setuptools 59.4.0
     six 1.16.0
 -->
 <link href="draft-eip-use-cases.xml" rel="alternate" type="application/rfc+xml">
@@ -156,6 +157,14 @@
   font-weight: 700;
   font-display: swap;
   src: local('Lora Bold'), local('Lora-Bold'), url('https://martinthomson.github.io/rfc-css/fonts/lora-bold-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Lora';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: local('Lora SemiBold'), local('Lora-SemiBold'), url('https://martinthomson.github.io/rfc-css/fonts/lora-semibold-latin.woff2') format('woff2');
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
@@ -339,7 +348,7 @@ ol, ul {
   padding: 0;
   margin: 0 0 0.5em 2em;
 }
-ol ol, ul ul, ol ul, ul ol {
+:is(ol, ul) :is(ol, ul) {
   margin-left: 1em;
 }
 li {
@@ -354,8 +363,7 @@ ul.empty, .ulEmpty {
 ul.empty li, .ulEmpty li {
   margin-top: 0.5em;
 }
-ul.compact, .ulCompact,
-ol.compact, .olCompact {
+:is(ul, ol).compact, .ulCompact, .olCompact {
   line-height: 100%;
   margin: 0 0 0 2em;
 }
@@ -371,7 +379,7 @@ dl > dd {
   margin-bottom: .8em;
   min-height: 1.3em;
 }
-dl.compact > dd, .dlCompact > dd {
+:is(dl.compact, .dlCompact) > dd {
   margin-bottom: 0em;
 }
 dl > dd > dl {
@@ -413,6 +421,9 @@ tt, code {
      remove leading to avoid altering the final height of lines */
   line-height: 0;
 }
+:is(h1, h2, h3, h4, h5, h6) :is(tt, code) {
+  font-size: 84%;
+}
 pre {
   border: 1px solid var(--line-color);
   font-size: 13.5px;
@@ -437,6 +448,19 @@ figcaption, caption {
   text-align: left;
 }
 @media screen {
+  /* Auto-collapse boilerplate. */
+  :is(#status-of-memo, #copyright) p {
+    margin: -2px 0;
+    max-height: 0;
+    transition: max-height 2s ease, margin 0.5s ease 0.5s;
+    overflow: hidden;
+  }
+  :is(#status-of-memo, #copyright):hover p,
+  :is(#status-of-memo, #copyright) h2:target ~ p {
+    margin: 0.5em 0;
+    max-height: 500px;
+    overflow: auto;
+  }
   pre, svg {
     display: inline-block;
     overflow-x: auto;
@@ -452,7 +476,7 @@ figcaption, caption {
     display: block;
     width: calc(100% - 25px);
   }
-  pre + .pilcrow, svg + .pilcrow {
+  :is(pre, svg) + .pilcrow {
     display: inline-block;
     vertical-align: text-bottom;
     padding-bottom: 8px;
@@ -501,17 +525,11 @@ th, td {
 th {
   background-color: var(--line-color);
 }
-tr:nth-child(2n) > td {
+:is(tr:nth-child(2n), thead+tbody > tr:nth-child(2n+1)) > td {
   background-color: var(--background-color);
 }
-tr:nth-child(2n+1) > td {
+:is(tr:nth-child(2n+1), thead+tbody > tr:nth-child(2n)) > td {
   background-color: var(--highlight-color);
-}
-thead+tbody > tr:nth-child(2n) > td {
-  background-color: var(--highlight-color);
-}
-thead+tbody > tr:nth-child(2n+1) > td {
-  background-color: var(--background-color);
 }
 table caption {
   margin: 0;
@@ -551,8 +569,9 @@ hr {
 }
 .bcp14 {
   font-variant: small-caps;
+  font-weight: 600;
+  font-size: 14.5px;
 }
-
 .role {
   font-variant: all-small-caps;
 }
@@ -791,7 +810,7 @@ hr.addr {
     margin: 0 0 0 4px;
     font-size: var(--small-font-size);
   }
-  #toc ul p, #toc ul li {
+  #toc ul :is(p, li) {
     margin: 2px 0;
     line-height: 22px;
   }
@@ -901,13 +920,13 @@ dl.dlNewline > dt {
 }
 
 /* Provide styling for table cell text alignment */
-table .text-left, table .text-left {
+table .text-left {
   text-align: left;
 }
-table .text-center, table .text-center {
+table .text-center {
   text-align: center;
 }
-table .text-right, table .text-right {
+table .text-right {
   text-align: right;
 }
 
@@ -974,12 +993,6 @@ address div.right {
   }
 
 }
-/* Tweak the bcp14 keyword presentation */
-.bcp14 {
-  font-variant: small-caps;
-  font-weight: bold;
-  font-size: 0.9em;
-}
 
 /* Dark mode. */
 @media (prefers-color-scheme: dark) {
@@ -994,19 +1007,20 @@ address div.right {
   --pilcrow-strong: #666;
   scrollbar-color: #777 #333;
 }
-/* Trick: a prefix match works because only black and white are allowed */
-svg [stroke="black"], svg [stroke^="#000"] {
+}
+
+/* SVG Trick: a prefix match works because only black and white are allowed */
+svg :is([stroke="black"], [stroke^="#000"]) {
   stroke: var(--text-color);
 }
-svg [stroke="white"], svg [stroke^="#fff"] {
+svg :is([stroke="white"], [stroke^="#fff"]) {
   stroke: var(--background-color);
 }
-svg [fill="black"], svg [fill^="#000"], svg :not([fill]) {
+svg :is([fill="black"], [fill^="#000"], :not([fill])) {
   fill: var(--text-color);
 }
-svg [stroke="fill"], svg [fill^="#fff"] {
+svg :is([stroke="fill"], [fill^="#fff"]) {
   fill: var(--background-color);
-}
 }
 </style>
 
@@ -1016,11 +1030,11 @@ svg [stroke="fill"], svg [fill^="#fff"] {
 <thead><tr>
 <td class="left">Internet-Draft</td>
 <td class="center">Extensible In-band Processing (EIP) Use </td>
-<td class="right">May 2022</td>
+<td class="right">June 2022</td>
 </tr></thead>
 <tfoot><tr>
 <td class="left">Salsano, et al.</td>
-<td class="center">Expires 27 November 2022</td>
+<td class="center">Expires 22 December 2022</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1033,12 +1047,12 @@ svg [stroke="fill"], svg [fill^="#fff"] {
 <dd class="internet-draft">draft-eip-use-cases-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2022-05-26" class="published">26 May 2022</time>
+<time datetime="2022-06-20" class="published">20 June 2022</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Informational</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2022-11-27">27 November 2022</time></dd>
+<dd class="expires"><time datetime="2022-12-22">22 December 2022</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1060,6 +1074,7 @@ svg [stroke="fill"], svg [fill^="#fff"] {
 <section id="section-abstract">
       <h2 id="abstract"><a href="#abstract" class="selfRef">Abstract</a></h2>
 <p id="section-abstract-1">This document discusses the use cases for the Extensible In-band Processing (EIP) solution.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
+<p id="section-abstract-2">Caveat: this document is still in brainstorming stage, it is distributed to stimulate discussion.<a href="#section-abstract-2" class="pilcrow">¶</a></p>
 </section>
 <section class="note rfcEditorRemove" id="section-note.1">
       <h2 id="name-about-this-document">
@@ -1095,7 +1110,7 @@ svg [stroke="fill"], svg [fill^="#fff"] {
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 27 November 2022.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 22 December 2022.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1134,20 +1149,18 @@ svg [stroke="fill"], svg [fill^="#fff"] {
                 <p id="section-toc.1-1.2.2.1.1" class="keepWithNext"><a href="#section-2.1" class="xref">2.1</a>.  <a href="#name-advanced-monitoring" class="xref">Advanced monitoring</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.2">
-                <p id="section-toc.1-1.2.2.2.1" class="keepWithNext"><a href="#section-2.2" class="xref">2.2</a>.  <a href="#name-deterministic-networking" class="xref">Deterministic Networking</a></p>
+                <p id="section-toc.1-1.2.2.2.1" class="keepWithNext"><a href="#section-2.2" class="xref">2.2</a>.  <a href="#name-semantic-routing" class="xref">Semantic Routing</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.3">
-                <p id="section-toc.1-1.2.2.3.1"><a href="#section-2.3" class="xref">2.3</a>.  <a href="#name-slicing" class="xref">Slicing</a></p>
+                <p id="section-toc.1-1.2.2.3.1"><a href="#section-2.3" class="xref">2.3</a>.  <a href="#name-deterministic-networking" class="xref">Deterministic Networking</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.4">
+                <p id="section-toc.1-1.2.2.4.1"><a href="#section-2.4" class="xref">2.4</a>.  <a href="#name-slicing" class="xref">Slicing</a></p>
 </li>
             </ul>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3">
             <p id="section-toc.1-1.3.1"><a href="#section-3" class="xref">3</a>.  <a href="#name-detailed-design-of-eip-base" class="xref">Detailed design of EIP based implementation of the use cases</a></p>
-<ul class="compact toc ulBare ulEmpty">
-<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.1">
-                <p id="section-toc.1-1.3.2.1.1"><a href="#section-3.1" class="xref">3.1</a>.  <a href="#name-advanced-monitoring-2" class="xref">Advanced monitoring</a></p>
-</li>
-            </ul>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4">
             <p id="section-toc.1-1.4.1"><a href="#section-4" class="xref">4</a>.  <a href="#name-conventions-and-definitions" class="xref">Conventions and Definitions</a></p>
@@ -1204,28 +1217,37 @@ svg [stroke="fill"], svg [fill^="#fff"] {
 Current technologies make it possible to define more complex monitoring operations to be performed by nodes in the data plane. The protocol extensibility offered by EIP is the natural complement to this new advanced monitoring approach. Thanks to information carried in the EIP header, it is possible to use the data plane also to synchronize monitoring operations across different nodes and it is possible to collect monitoring information in real time. Data plane entities can be used to sample and aggregate monitoring information.<a href="#section-2.1-2" class="pilcrow">¶</a></p>
 </section>
 </div>
-<div id="deterministic-networking">
+<div id="semantic-routing">
 <section id="section-2.2">
-        <h3 id="name-deterministic-networking">
-<a href="#section-2.2" class="section-number selfRef">2.2. </a><a href="#name-deterministic-networking" class="section-name selfRef">Deterministic Networking</a>
+        <h3 id="name-semantic-routing">
+<a href="#section-2.2" class="section-number selfRef">2.2. </a><a href="#name-semantic-routing" class="section-name selfRef">Semantic Routing</a>
         </h3>
-<p id="section-2.2-1"><span>[<a href="#RFC8655" class="xref">RFC8655</a>]</span> and <span>[<a href="#RFC8938" class="xref">RFC8938</a>]</span> respectively specify the Architecture and data Plane Framework for Deterministic Networking. <span>[<a href="#RFC8939" class="xref">RFC8939</a>]</span> specifies the IP data plane for DetNet, with this design choice: existing IP-layer and higher-layer protocol header information is used to support flow identification and DetNet service delivery. There are known limitations in the current IP data plane for DetNet, as discussed in <span>[<a href="#RFC8939" class="xref">RFC8939</a>]</span>. In particular, the IP data plane for DetNet, uses 6-tuple-based flow identification, where "6-tuple" is destination address, source address, IP protocol, source port, destination port, and DSCP (optional matching on the IPv6 Flow Label field). Flow aggregation may be enabled via the use of wildcards, masks, lists, prefixes, and ranges. IP tunnels may also be used to support flow aggregation. The result of this design is:<a href="#section-2.2-1" class="pilcrow">¶</a></p>
+<p id="section-2.2-1">EIP can support Semantic Routing, when it is needed to place information in additional fields of the packets. Specific EIP Information Elements can be defined to carry the information needed by Semantic Routing.<a href="#section-2.2-1" class="pilcrow">¶</a></p>
+<p id="section-2.2-2">A specific example is "geo-tagging", i.e. encoding the geographical position of a node in the IPv6 headers, so that this information can be used also for taking forwarding decisions.<a href="#section-2.2-2" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="deterministic-networking">
+<section id="section-2.3">
+        <h3 id="name-deterministic-networking">
+<a href="#section-2.3" class="section-number selfRef">2.3. </a><a href="#name-deterministic-networking" class="section-name selfRef">Deterministic Networking</a>
+        </h3>
+<p id="section-2.3-1"><span>[<a href="#RFC8655" class="xref">RFC8655</a>]</span> and <span>[<a href="#RFC8938" class="xref">RFC8938</a>]</span> respectively specify the Architecture and data Plane Framework for Deterministic Networking. <span>[<a href="#RFC8939" class="xref">RFC8939</a>]</span> specifies the IP data plane for DetNet, with this design choice: existing IP-layer and higher-layer protocol header information is used to support flow identification and DetNet service delivery. There are known limitations in the current IP data plane for DetNet, as discussed in <span>[<a href="#RFC8939" class="xref">RFC8939</a>]</span>. In particular, the IP data plane for DetNet, uses 6-tuple-based flow identification, where "6-tuple" is destination address, source address, IP protocol, source port, destination port, and DSCP (optional matching on the IPv6 Flow Label field). Flow aggregation may be enabled via the use of wildcards, masks, lists, prefixes, and ranges. IP tunnels may also be used to support flow aggregation. The result of this design is:<a href="#section-2.3-1" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-2.2-2.1">Operational complexity: from a practical standpoint, this means that all nodes along the end-to-end path of DetNet flows need to agree on what fields are used for flow identification. Possible consequences of not having such an agreement include some flows interfering with other flows, and the traffic treatment expected for a service not being provided.<a href="#section-2.2-2.1" class="pilcrow">¶</a>
+<li class="normal" id="section-2.3-2.1">Operational complexity: from a practical standpoint, this means that all nodes along the end-to-end path of DetNet flows need to agree on what fields are used for flow identification. Possible consequences of not having such an agreement include some flows interfering with other flows, and the traffic treatment expected for a service not being provided.<a href="#section-2.3-2.1" class="pilcrow">¶</a>
 </li>
-          <li class="normal" id="section-2.2-2.2">Lack of unified end-to-end sequencing information: service protection (if enabled) cannot be provided end to end, only within sub-networks.<a href="#section-2.2-2.2" class="pilcrow">¶</a>
+          <li class="normal" id="section-2.3-2.2">Lack of unified end-to-end sequencing information: service protection (if enabled) cannot be provided end to end, only within sub-networks.<a href="#section-2.3-2.2" class="pilcrow">¶</a>
 </li>
         </ul>
-<p id="section-2.2-3">EIP is used to add explicit DetNet information in IP packets. This simplifies the implementation of Deterministic Networking in IP routers and hosts and provides additional features with respect to current support of Detnet in IP networks.<a href="#section-2.2-3" class="pilcrow">¶</a></p>
-<p id="section-2.2-4">EIP adds the support of explicit Detnet flow identification and sequencing information.<a href="#section-2.2-4" class="pilcrow">¶</a></p>
+<p id="section-2.3-3">EIP is used to add explicit DetNet information in IP packets. This simplifies the implementation of Deterministic Networking in IP routers and hosts and provides additional features with respect to current support of Detnet in IP networks.<a href="#section-2.3-3" class="pilcrow">¶</a></p>
+<p id="section-2.3-4">EIP adds the support of explicit Detnet flow identification and sequencing information.<a href="#section-2.3-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="slicing">
-<section id="section-2.3">
+<section id="section-2.4">
         <h3 id="name-slicing">
-<a href="#section-2.3" class="section-number selfRef">2.3. </a><a href="#name-slicing" class="section-name selfRef">Slicing</a>
+<a href="#section-2.4" class="section-number selfRef">2.4. </a><a href="#name-slicing" class="section-name selfRef">Slicing</a>
         </h3>
-<p id="section-2.3-1">TO BE PROVIDED<a href="#section-2.3-1" class="pilcrow">¶</a></p>
+<p id="section-2.4-1">TO BE PROVIDED<a href="#section-2.4-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
@@ -1235,14 +1257,7 @@ Current technologies make it possible to define more complex monitoring operatio
       <h2 id="name-detailed-design-of-eip-base">
 <a href="#section-3" class="section-number selfRef">3. </a><a href="#name-detailed-design-of-eip-base" class="section-name selfRef">Detailed design of EIP based implementation of the use cases</a>
       </h2>
-<div id="advanced-monitoring-1">
-<section id="section-3.1">
-        <h3 id="name-advanced-monitoring-2">
-<a href="#section-3.1" class="section-number selfRef">3.1. </a><a href="#name-advanced-monitoring-2" class="section-name selfRef">Advanced monitoring</a>
-        </h3>
-<p id="section-3.1-1">TO BE PROVIDED<a href="#section-3.1-1" class="pilcrow">¶</a></p>
-</section>
-</div>
+<p id="section-3-1">TO BE PROVIDED<a href="#section-3-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="conventions-and-definitions">
@@ -1296,6 +1311,18 @@ appear in all capitals, as shown here.<a href="#section-4-1" class="pilcrow">¶<
 <a href="#section-7.2" class="section-number selfRef">7.2. </a><a href="#name-informative-references" class="section-name selfRef">Informative References</a>
         </h3>
 <dl class="references">
+<dt id="I-D.filsfils-spring-path-tracing">[I-D.filsfils-spring-path-tracing]</dt>
+        <dd>
+<span class="refAuthor">Filsfils, C.</span>, <span class="refAuthor">Abdelsalam, A.</span>, <span class="refAuthor">Garvia, P. C.</span>, <span class="refAuthor">Yufit, M.</span>, <span class="refAuthor">Graf, T.</span>, <span class="refAuthor">Su, Y.</span>, and <span class="refAuthor">S. Matsushima</span>, <span class="refTitle">"Path Tracing in SRv6 networks"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-filsfils-spring-path-tracing-00</span>, <time datetime="2022-03-04" class="refDate">4 March 2022</time>, <span>&lt;<a href="https://www.ietf.org/archive/id/draft-filsfils-spring-path-tracing-00.txt">https://www.ietf.org/archive/id/draft-filsfils-spring-path-tracing-00.txt</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="I-D.farrel-irtf-introduction-to-semantic-routing">[I-D.farrel-irtf-introduction-to-semantic-routing]</dt>
+        <dd>
+<span class="refAuthor">Farrel, A.</span> and <span class="refAuthor">D. King</span>, <span class="refTitle">"An Introduction to Semantic Routing"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-farrel-irtf-introduction-to-semantic-routing-04</span>, <time datetime="2022-04-25" class="refDate">25 April 2022</time>, <span>&lt;<a href="https://www.ietf.org/archive/id/draft-farrel-irtf-introduction-to-semantic-routing-04.txt">https://www.ietf.org/archive/id/draft-farrel-irtf-introduction-to-semantic-routing-04.txt</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="I-D.king-irtf-semantic-routing-survey">[I-D.king-irtf-semantic-routing-survey]</dt>
+        <dd>
+<span class="refAuthor">King, D.</span> and <span class="refAuthor">A. Farrel</span>, <span class="refTitle">"A Survey of Semantic Internet Routing Techniques"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-king-irtf-semantic-routing-survey-02</span>, <time datetime="2021-06-28" class="refDate">28 June 2021</time>, <span>&lt;<a href="https://www.ietf.org/archive/id/draft-king-irtf-semantic-routing-survey-02.txt">https://www.ietf.org/archive/id/draft-king-irtf-semantic-routing-survey-02.txt</a>&gt;</span>. </dd>
+<dd class="break"></dd>
 <dt id="id-eip-headers">[id-eip-headers]</dt>
         <dd>
 <span class="refAuthor">Salsano, S.</span> and <span class="refAuthor">H. ElBakoury</span>, <span class="refTitle">"Extensible In-band Processing (EIP) Headers Definitions"</span>, <time datetime="2022" class="refDate">2022</time>, <span>&lt;<a href="https://eip-home.github.io/eip-headers/draft-eip-headers-definitions.txt">https://eip-home.github.io/eip-headers/draft-eip-headers-definitions.txt</a>&gt;</span>. </dd>
