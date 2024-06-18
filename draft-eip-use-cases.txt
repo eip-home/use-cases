@@ -1,0 +1,292 @@
+
+
+
+
+SIG on EIP                                                    S. Salsano
+Internet-Draft                          Univ. of Rome Tor Vergata / CNIT
+Intended status: Informational                              H. ElBakoury
+Expires: 22 December 2022                                     Consultant
+                                                                D. Lopez
+                                                         Telefonica, I+D
+                                                            20 June 2022
+
+
+             Extensible In-band Processing (EIP) Use Cases
+                       draft-eip-use-cases-latest
+
+Abstract
+
+   This document discusses the use cases for the Extensible In-band
+   Processing (EIP) solution.
+
+   Caveat: this document is still in brainstorming stage, it is
+   distributed to stimulate discussion.
+
+About This Document
+
+   This note is to be removed before publishing as an RFC.
+
+   The latest revision of this draft can be found at https://eip-
+   home.github.io/use-cases/draft-eip-use-cases.html.  Status
+   information for this document may be found at
+   https://datatracker.ietf.org/doc/draft-eip-use-cases/.
+
+   Discussion of this document takes place on the EIP SIG mailing list
+   (mailto:eip@cnit.it), which is archived at http://postino.cnit.it/
+   cgi-bin/mailman/private/eip/.
+
+   Source for this draft and an issue tracker can be found at
+   https://github.com/eip-home/use-cases.
+
+Status of This Memo
+
+   This Internet-Draft is submitted in full conformance with the
+   provisions of BCP 78 and BCP 79.
+
+   Internet-Drafts are working documents of the Internet Engineering
+   Task Force (IETF).  Note that other groups may also distribute
+   working documents as Internet-Drafts.  The list of current Internet-
+   Drafts is at https://datatracker.ietf.org/drafts/current/.
+
+   Internet-Drafts are draft documents valid for a maximum of six months
+   and may be updated, replaced, or obsoleted by other documents at any
+   time.  It is inappropriate to use Internet-Drafts as reference
+   material or to cite them other than as "work in progress."
+
+   This Internet-Draft will expire on 22 December 2022.
+
+Copyright Notice
+
+   Copyright (c) 2022 IETF Trust and the persons identified as the
+   document authors.  All rights reserved.
+
+   This document is subject to BCP 78 and the IETF Trust's Legal
+   Provisions Relating to IETF Documents (https://trustee.ietf.org/
+   license-info) in effect on the date of publication of this document.
+   Please review these documents carefully, as they describe your rights
+   and restrictions with respect to this document.
+
+Table of Contents
+
+   1.  Introduction
+   2.  Use cases (high level description)
+     2.1.  Advanced monitoring
+     2.2.  Semantic Routing
+     2.3.  Deterministic Networking
+     2.4.  Slicing
+   3.  Detailed design of EIP based implementation of the use cases
+   4.  Conventions and Definitions
+   5.  Security Considerations
+   6.  IANA Considerations
+   7.  References
+     7.1.  Normative References
+     7.2.  Informative References
+   Acknowledgments
+   Authors' Addresses
+
+1.  Introduction
+
+   EIP (Extensible In-band Processing) extends the functionality of IPv6
+   layer to support the requirements of future Internet services / 6G
+   networks.  In a nutshell, IPv6 nodes (routers and hosts) can read/
+   write EIP information in packet headers to support different use
+   cases.
+
+   EIP provides a common architectural and protocol framework which can
+   be tailored for the different use cases.  The EIP header includes a
+   number of EIP Information Elements.  Each use case will have its own
+   specific architectural aspects and protocol specifications (EIP
+   Information Elements).
+
+   In this document, some use cases for EIP are discussed.  The EIP
+   architecture is discussed in [id-eip-arch].  The EIP Information
+   Elements are described in [id-eip-headers].
+
+2.  Use cases (high level description)
+
+2.1.  Advanced monitoring
+
+   Traditional network monitoring solutions are based on the centralized
+   collection of monitoring data collected by network nodes (SNMP/
+   Netflow).  These traditional solutions are "slow" and have
+   scalability issues.  They are not meant to monitor a large number of
+   single flows in real time, they are meant to monitor large aggregates
+   of flows (e.g. all traffic flowing on a given link).  Typical time
+   scale of the reaction time of the management system is in the order
+   of minutes (e.g. 1-5 minutes).
+
+   The traditional approach separates the data plane and the management
+   plane.  The nodes collect counters and statistics, then they
+   communicate with the NMS (Network Management Stations) over the
+   management plane.  Current technologies make it possible to define
+   more complex monitoring operations to be performed by nodes in the
+   data plane.  The protocol extensibility offered by EIP is the natural
+   complement to this new advanced monitoring approach.  Thanks to
+   information carried in the EIP header, it is possible to use the data
+   plane also to synchronize monitoring operations across different
+   nodes and it is possible to collect monitoring information in real
+   time.  Data plane entities can be used to sample and aggregate
+   monitoring information.
+
+2.2.  Semantic Routing
+
+   The Internet Draft
+   [I-D.draft-farrel-irtf-introduction-to-semantic-routing] provides a
+   brief introduction to Semantic Routing.  The Internet Draft
+   [I-D.draft-king-irtf-semantic-routing-survey] includes a survey of
+   several approaches that can be classified under the umbrella term
+   Semantic Routing.
+
+   EIP can support Semantic Routing, in the cases where it is needed to
+   place information in additional fields of the packets.  Specific EIP
+   Information Elements can be defined to carry the information needed
+   by Semantic Routing.
+
+   One example is "geo-tagging", i.e. encoding the geographical position
+   of a node in the IPv6 headers, so that this information can be used
+   (also) for taking forwarding decisions.  A Geo-tagging EIP
+   Information Element can be defined, which can be used by a node to
+   provide its location or to indicate the location of a destination
+   node.
+
+2.3.  Deterministic Networking
+
+   [RFC8655] and [RFC8938] respectively specify the Architecture and
+   data Plane Framework for Deterministic Networking.  [RFC8939]
+   specifies the IP data plane for DetNet, with this design choice:
+   existing IP-layer and higher-layer protocol header information is
+   used to support flow identification and DetNet service delivery.
+   There are known limitations in the current IP data plane for DetNet,
+   as discussed in [RFC8939].  In particular, the IP data plane for
+   DetNet, uses 6-tuple-based flow identification, where "6-tuple" is
+   destination address, source address, IP protocol, source port,
+   destination port, and DSCP (optional matching on the IPv6 Flow Label
+   field).  Flow aggregation may be enabled via the use of wildcards,
+   masks, lists, prefixes, and ranges.  IP tunnels may also be used to
+   support flow aggregation.  The result of this design is:
+
+   *  Operational complexity: from a practical standpoint, this means
+      that all nodes along the end-to-end path of DetNet flows need to
+      agree on what fields are used for flow identification.  Possible
+      consequences of not having such an agreement include some flows
+      interfering with other flows, and the traffic treatment expected
+      for a service not being provided.
+
+   *  Lack of unified end-to-end sequencing information: service
+      protection (if enabled) cannot be provided end to end, only within
+      sub-networks.
+
+   EIP is used to add explicit DetNet information in IP packets.  This
+   simplifies the implementation of Deterministic Networking in IP
+   routers and hosts and provides additional features with respect to
+   current support of Detnet in IP networks.
+
+   EIP adds the support of explicit Detnet flow identification and
+   sequencing information.
+
+2.4.  Slicing
+
+   TO BE PROVIDED
+
+3.  Detailed design of EIP based implementation of the use cases
+
+   TO BE PROVIDED
+
+4.  Conventions and Definitions
+
+   The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
+   "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and
+   "OPTIONAL" in this document are to be interpreted as described in
+   BCP 14 [RFC2119] [RFC8174] when, and only when, they appear in all
+   capitals, as shown here.
+
+5.  Security Considerations
+
+   TODO Security
+
+6.  IANA Considerations
+
+   This document has no IANA actions.
+
+7.  References
+
+7.1.  Normative References
+
+   [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
+              Requirement Levels", BCP 14, RFC 2119,
+              DOI 10.17487/RFC2119, March 1997,
+              <https://www.rfc-editor.org/rfc/rfc2119>.
+
+   [RFC8174]  Leiba, B., "Ambiguity of Uppercase vs Lowercase in RFC
+              2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174,
+              May 2017, <https://www.rfc-editor.org/rfc/rfc8174>.
+
+7.2.  Informative References
+
+   [I-D.draft-farrel-irtf-introduction-to-semantic-routing]
+              Farrel, A. and D. King, "An Introduction to Semantic
+              Routing", Work in Progress, Internet-Draft, draft-farrel-
+              irtf-introduction-to-semantic-routing-04, 25 April 2022,
+              <https://datatracker.ietf.org/doc/html/draft-farrel-irtf-
+              introduction-to-semantic-routing-04>.
+
+   [I-D.draft-filsfils-spring-path-tracing]
+              Filsfils, C., Abdelsalam, A., Garvia, P. C., Yufit, M.,
+              Graf, T., Su, Y., Matsushima, S., and M. Valentine, "Path
+              Tracing in SRv6 networks", Work in Progress, Internet-
+              Draft, draft-filsfils-spring-path-tracing-01, 30 May 2022,
+              <https://datatracker.ietf.org/doc/html/draft-filsfils-
+              spring-path-tracing-01>.
+
+   [I-D.draft-king-irtf-semantic-routing-survey]
+              King, D. and A. Farrel, "A Survey of Semantic Internet
+              Routing Techniques", Work in Progress, Internet-Draft,
+              draft-king-irtf-semantic-routing-survey-04, 30 May 2022,
+              <https://datatracker.ietf.org/doc/html/draft-king-irtf-
+              semantic-routing-survey-04>.
+
+   [id-eip-arch]
+              Salsano, S. and H. ElBakoury, "Extensible In-band
+              Processing (EIP) Architecture and Framework", 2022,
+              <https://eip-home.github.io/eip-arch/draft-eip-arch.txt>.
+
+   [id-eip-headers]
+              Salsano, S. and H. ElBakoury, "Extensible In-band
+              Processing (EIP) Headers Definitions", 2022, <https://eip-
+              home.github.io/eip-headers/draft-eip-headers-
+              definitions.txt>.
+
+   [RFC8655]  Finn, N., Thubert, P., Varga, B., and J. Farkas,
+              "Deterministic Networking Architecture", RFC 8655,
+              DOI 10.17487/RFC8655, October 2019,
+              <https://www.rfc-editor.org/rfc/rfc8655>.
+
+   [RFC8938]  Varga, B., Ed., Farkas, J., Berger, L., Malis, A., and S.
+              Bryant, "Deterministic Networking (DetNet) Data Plane
+              Framework", RFC 8938, DOI 10.17487/RFC8938, November 2020,
+              <https://www.rfc-editor.org/rfc/rfc8938>.
+
+   [RFC8939]  Varga, B., Ed., Farkas, J., Berger, L., Fedyk, D., and S.
+              Bryant, "Deterministic Networking (DetNet) Data Plane:
+              IP", RFC 8939, DOI 10.17487/RFC8939, November 2020,
+              <https://www.rfc-editor.org/rfc/rfc8939>.
+
+Acknowledgments
+
+   TODO acknowledge.
+
+Authors' Addresses
+
+   Stefano Salsano
+   Univ. of Rome Tor Vergata / CNIT
+   Email: stefano.salsano@uniroma2.it
+
+
+   Hesham ElBakoury
+   Consultant
+   Email: helbakoury@gmail.com
+
+
+   Diego R. Lopez
+   Telefonica, I+D
+   Email: diego.r.lopez@telefonica.com
